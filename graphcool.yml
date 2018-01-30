@@ -110,7 +110,14 @@ permissions:
     authenticated: true
     query: ./permissions/PostOwner.graphql
 
-
+  ## UserPosts , Only admin can update post owner##
+  - operation: UserPosts.connect
+    authenticated: true
+    query: ./permissions/IsAdmin.graphql
+  - operation: UserPosts.disconnect
+    authenticated: true
+    query: ./permissions/IsAdmin.graphql
+ 
 # Your root tokens used for functions to get full access to the API
 # Read more here:
 # https://www.graph.cool/docs/reference/auth/authentication/authentication-tokens-eip7ahqu5o
