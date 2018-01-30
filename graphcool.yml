@@ -58,11 +58,11 @@ permissions:
   # Admin
   - operation: User.read
     authenticated: true  
-    query: ./permissions/isAdmin.graphql
+    query: ./permissions/IsAdmin.graphql
   # Owner
   - operation: User.read
     authenticated: true
-    query: ./permissions/userOwner.graphql
+    query: ./permissions/UserOwner.graphql
   # Default users
   - operation: User.read
     authenticated: true
@@ -72,20 +72,43 @@ permissions:
   # Admin
   - operation: User.update
     authenticated: true
-    query: ./permissions/isAdmin.graphql
+    query: ./permissions/IsAdmin.graphql
   # Owner
   - operation: User.update
     authenticated: true
     fields: [dateOfBirth]
-    query: ./permissions/userOwner.graphql
+    query: ./permissions/UserOwner.graphql
 
+  ## Post Read ##
+  # All auth
   - operation: Post.read
-  # - operation: Post.create 
+    authenticated: true
 
-  # - operation: Post.update
-#    authenticated: true
-    #    fields: [title]
-    #    query: ./updatePost.graphql
+  ## Post Create ##
+  # All auth
+  - operation: Post.create
+    authenticated: true
+  
+  ## Post Update ##
+  # Admin
+  - operation: Post.update
+    authenticated: true
+    query: ./permissions/IsAdmin.graphql
+  # Owner 
+  - operation: Post.update
+    authenticated: true
+    fields: [title, body]
+    query: ./permissions/PostOwner.graphql
+  
+  ## Post Delete ##
+  # Admin
+  - operation: Post.delete
+    authenticated: true
+    query: ./permissions/IsAdmin.graphql
+  # Owner
+  - operation: Post.delete
+    authenticated: true
+    query: ./permissions/PostOwner.graphql
 
 
 # Your root tokens used for functions to get full access to the API

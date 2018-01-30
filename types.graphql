@@ -11,12 +11,17 @@ type User @model {
     password: String!
     role: Role! @defaultValue(value: USER)
     posts: [Post!]! @relation(name: "UserPosts")
+    createdAt: DateTime! 
+    updatedAt: DateTime! 
 }
 
 type Post @model {
     id: ID! @isUnique
     title: String!
+    body: String
     author: User! @relation(name: "UserPosts")
+    createdAt: DateTime! 
+    updatedAt: DateTime! 
 }
 
 

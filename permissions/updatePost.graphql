@@ -1,8 +1,0 @@
-query UpdatePostQuery($node_id: ID!, $user_id: ID!) {
-    SomePostExists(filter: {
-        id: $node_id,
-        auther: {
-            id: $user_id
-        }
-    })
-}
